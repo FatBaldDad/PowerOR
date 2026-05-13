@@ -169,3 +169,22 @@ PowerOR is an experimental hardware project.
 I am documenting the idea, design, and testing process as I work through it. Nothing in this repository should be taken as a guarantee that the design is safe for every console or every build.
 
 Do not install this in a valuable or heavily modified console without proper testing.
+
+## Project Documents
+
+Detailed project notes are organized in the `Documents` folder.
+
+- [Project Scope](Documents/01-Project-Scope.md)
+- [USB-C PD and the PS2](Documents/02-USB-C-PD-and-the-PS2.md)
+- [USB-C PD Controversy and Risks](Documents/03-USB-C-PD-Controversy-and-Risks.md)
+- [PS2 Power Requirements](Documents/04-PS2-Power-Requirements.md)
+- [USB-C PD Chargers and Cables](Documents/05-USB-C-PD-Chargers-and-Cables.md)
+- [Trigger Board: Purchase or Design?](Documents/06-Trigger-Board-Purchase-or-Design.md)
+- [Power Signal Quality](Documents/07-Power-Signal-Quality.md)
+- [Power Conditioning and Protection](Documents/08-Power-Conditioning-and-Protection.md)
+- [Power OR-ing Design](Documents/09-Power-OR-ing-Design.md)
+- [Board Design](Documents/10-Board-Design.md)
+- [Fitment and Installation Planning](Documents/11-Fitment-and-Installation-Planning.md)
+- [Testing and Validation](Documents/12-Testing-and-Validation.md)
+- [Release Plan and Kits](Documents/13-Release-Plan-and-Kits.md)
+- [FAQ](Documents/14-FAQ.md)
