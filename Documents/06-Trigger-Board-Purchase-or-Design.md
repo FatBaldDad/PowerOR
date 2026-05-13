@@ -65,7 +65,7 @@ Both options have advantages and disadvantages.
 
 ---
 
-# Option 1: Purchase a Trigger Board
+## Option 1: Purchase a Trigger Board
 
 A purchased trigger board is the simplest way to start testing.
 
@@ -166,7 +166,7 @@ Do not assume the board is set correctly from the seller.
 
 ---
 
-# Option 2: Design a Custom Trigger Board
+## Option 2: Design a Custom Trigger Board
 
 The second option is to design the USB-C PD trigger circuit directly into the PowerOR board.
 
@@ -264,5 +264,328 @@ A 9V trigger approach may be suitable for lighter PS2 Slim builds, but it is not
 
 A practical early target for PowerOR is:
 
-```text
+<pre>
 9V at up to 3A
+</pre>
+
+This equals:
+
+<pre>
+27W
+</pre>
+
+This may be enough for selected lower-power PS2 Slim builds, especially builds without the optical drive and without high-current internal mods.
+
+However, this must be confirmed by testing.
+
+The full system must be tested with:
+
+- The actual PS2 board revision
+- The actual installed mods
+- The actual charger
+- The actual cable
+- The actual trigger board
+- The actual PowerOR board revision
+
+Do not assume that 9V at 3A is enough for every PS2 Slim build.
+
+---
+
+## Higher Voltage Trigger With Buck Conversion
+
+Another possible design direction is to request a higher USB-C PD voltage and then step it down with a buck converter.
+
+Example input profiles:
+
+- 12V
+- 15V
+- 20V
+
+The buck converter would then regulate the output down to the console-safe voltage.
+
+Possible advantages:
+
+- More power may be available from the charger.
+- Lower current flows through the USB-C input side for the same power.
+- It may provide more headroom for higher-current designs.
+- The final output voltage can be controlled by the buck stage.
+
+Possible disadvantages:
+
+- More heat
+- More complexity
+- More parts
+- More layout sensitivity
+- More ripple/noise concerns
+- More testing required
+- More thermal design required
+
+This approach may be useful later, but it should be treated as a separate design path.
+
+Never connect 12V, 15V, or 20V directly to the console input.
+
+---
+
+## Adjustable Trigger Boards
+
+Some trigger boards allow the output voltage to be selected using buttons, jumpers, switches, or solder pads.
+
+These can be useful for testing, but they also add risk.
+
+Possible problems include:
+
+- Accidentally selecting the wrong voltage
+- The board resetting to a different voltage
+- Unclear voltage display
+- Poor documentation
+- Button settings changing unintentionally
+- No lockout against dangerous voltage selection
+
+For a PS2 install, an adjustable trigger board should be treated carefully.
+
+If used, the selected output voltage must be confirmed before connecting it to the console.
+
+For a final kit, a fixed-voltage or locked configuration may be safer than a user-adjustable setup.
+
+---
+
+## Fixed-Voltage Trigger Boards
+
+A fixed-voltage trigger board requests one specific PD profile.
+
+For example:
+
+<pre>
+Fixed 9V trigger
+</pre>
+
+This may be safer for a kit because there is less chance of the end user selecting the wrong voltage.
+
+Possible advantages:
+
+- Simpler operation
+- Less user error
+- Easier documentation
+- Easier testing
+- More predictable behavior
+
+Possible concerns:
+
+- Less flexible
+- Still depends on charger support
+- Still needs testing
+- Still may vary by board quality
+
+For PowerOR kits, a fixed or locked voltage approach may be preferred.
+
+---
+
+## Current Handling
+
+The trigger board must be able to handle the current required by the system.
+
+Current handling depends on:
+
+- USB-C connector
+- PCB trace width
+- Solder joints
+- Copper thickness
+- Components in the power path
+- Output pads
+- Wires
+- Thermal design
+
+A listing may claim a high current rating, but the board still needs to be tested.
+
+If the board gets hot during load testing, it may not be suitable.
+
+The trigger board should not be the weak point in the power path.
+
+---
+
+## Voltage Output Must Be Verified
+
+Before connecting a trigger board to PowerOR or a console, verify the output voltage.
+
+Recommended process:
+
+1. Connect the trigger board to the USB-C PD charger.
+2. Measure the output voltage with a multimeter.
+3. Confirm the voltage matches the expected setting.
+4. Apply a dummy load.
+5. Measure the voltage again under load.
+6. Check for heat.
+7. Repeat with the intended cable.
+8. Repeat with more than one charger if possible.
+
+Do not trust the label.
+
+Measure it.
+
+---
+
+## Trigger Board Test Table
+
+Suggested trigger board documentation table:
+
+| Item | Result | Notes |
+|---|---|---|
+| Trigger board name/model | TBD |  |
+| Purchased or custom | TBD |  |
+| Requested voltage | TBD |  |
+| Charger used | TBD |  |
+| Cable used | TBD |  |
+| No-load voltage | TBD |  |
+| Loaded voltage | TBD |  |
+| Maximum tested current | TBD |  |
+| Heat under load | TBD |  |
+| Startup behavior checked | TBD |  |
+| Ripple checked | TBD |  |
+| Connector strength checked | TBD |  |
+| Suitable for prototype testing | TBD |  |
+
+---
+
+## Trigger Board Failure Concerns
+
+A trigger board failure can create serious problems.
+
+Possible failure modes include:
+
+- No output
+- Wrong output voltage
+- Intermittent output
+- Voltage drop under load
+- Excessive heat
+- Failed negotiation
+- Charger shutdown
+- Shorted output
+- Damaged USB-C connector
+- Poor recovery after unplugging and reconnecting
+
+The PowerOR design should assume that not every trigger board is trustworthy.
+
+Protection and testing are required.
+
+---
+
+## Mechanical Fitment
+
+The trigger board must fit inside the intended console build.
+
+Mechanical concerns include:
+
+- Board size
+- USB-C port location
+- Cable routing
+- Mounting strength
+- Clearance from the shell
+- Clearance from RF shields
+- Heat clearance
+- Access to solder pads
+- Stress on the USB-C connector
+
+A board that works electrically may still be unsuitable if it cannot be mounted safely.
+
+For a kit, the USB-C port should be mechanically supported so the solder joints are not carrying all insertion and removal force.
+
+---
+
+## Purchased Board as Prototype Tool
+
+Purchased trigger boards should be viewed as prototype tools.
+
+They are useful for learning and early testing, but they should not automatically become the final kit design.
+
+They can help answer:
+
+- Does the charger negotiate correctly?
+- Is 9V stable enough?
+- How much current can be drawn?
+- How much heat is produced?
+- How does the PS2 behave?
+- Is a custom trigger section worth designing?
+
+Once these questions are answered, the final PowerOR design can be improved.
+
+---
+
+## Custom Design as Future Kit Direction
+
+A custom trigger section may make sense for a future PowerOR kit if testing shows that USB-C PD is practical.
+
+A custom design could allow:
+
+- Cleaner assembly
+- Better mounting
+- Better test points
+- Better protection
+- Known parts
+- Better documentation
+- More consistent behavior
+- Better integration with PowerOR
+
+However, the custom design should only happen after enough testing has been done to justify it.
+
+---
+
+## Public Documentation and Final Kit Files
+
+This repository may document trigger board testing, design decisions, and public development notes.
+
+However, final production files are not planned for public release at this time.
+
+This may include:
+
+- Final Gerbers
+- Complete KiCad source
+- Pick-and-place files
+- Assembly files
+- Final production BOM
+- Manufacturing package
+
+The public goal is to document the project, the risks, the testing, and the design direction while protecting the final assembled kit.
+
+---
+
+## Practical Starting Plan
+
+The practical starting plan for PowerOR is:
+
+1. Test purchased USB-C PD trigger boards.
+2. Focus on 9V output first.
+3. Confirm 9V at up to 3A where supported.
+4. Test with known-good chargers and cables.
+5. Use dummy loads before connecting a console.
+6. Measure voltage at the trigger board output.
+7. Measure voltage at the PowerOR output.
+8. Measure voltage at the console input.
+9. Check heat during extended use.
+10. Document all results.
+11. Decide later whether to design a custom trigger section.
+
+This keeps the project moving without pretending the final trigger design is already solved.
+
+---
+
+## Project Position
+
+For now, purchased trigger boards are useful for testing and learning.
+
+A custom trigger design may be better for a final kit, but only after enough testing has been completed.
+
+PowerOR should not depend on assumptions, seller claims, or the fact that a console powers on.
+
+The trigger board must be tested as part of the complete power system.
+
+---
+
+## Disclaimer
+
+This document is part of an experimental hardware project.
+
+A USB-C PD trigger board can output the wrong voltage, fail under load, overheat, or behave unpredictably with certain chargers and cables.
+
+Incorrect voltage or unstable power can damage a PlayStation 2 console.
+
+Use this information at your own risk.
