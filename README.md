@@ -2,7 +2,7 @@
   <img src="Images/PowerOR_Promo.png" alt="PowerOR Promo Image" width="50%">
 </p>
 
-# PowerOR
+# PS2 PowerOR
 
 PowerOR is an experimental power OR-ing project for PlayStation 2 Slim consoles.
 
