@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Images/PowerOR_Promo.png" alt="PowerOR Promo Image" width="50%">
+  <img src="Images/PowerOR_Promo.png" alt="PowerOR Promo Image" width="70%">
 </p>
 
 # PS2 PowerOR
