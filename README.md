@@ -188,3 +188,11 @@ Detailed project notes are organized in the `Documents` folder.
 - [Testing and Validation](Documents/12-Testing-and-Validation.md)
 - [Release Plan and Kits](Documents/13-Release-Plan-and-Kits.md)
 - [FAQ](Documents/14-FAQ.md)
+
+## AI Assistance and Attribution Disclaimer
+
+This project uses AI tools to help with writing, organization, documentation, research, code examples, and design planning. While I review and edit the information, some details may still be incorrect, incomplete, or outdated.
+
+Not all ideas, code, research, methods, or technical information in this project should be credited only to me. This project may reference, build on, or be inspired by community knowledge, open-source projects, datasheets, forum posts, Discord discussions, manufacturer documentation, and the work of other developers and modders.
+
+Credit will be given whenever a source is known. If something is missing credit or needs correction, please let me know so I can update the documentation.
